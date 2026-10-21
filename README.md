@@ -21,7 +21,7 @@ Add a **Browser** source named `Minecraft Skin Overlay`. Enable **Local file** a
 
 1. Connect your broadcaster account under **Platforms → Twitch → Accounts**. For automatic OBS refresh, enable OBS WebSocket and connect it under **Stream Apps → OBS** in Streamer.bot (same-PC host `127.0.0.1`, usually port `4455`, plus your OBS WebSocket password). [Twitch setup](https://docs.streamer.bot/guide/platforms/twitch/) · [OBS setup](https://docs.streamer.bot/guide/stream-apps/obs-studio)
 2. Under **Actions & Queues → Queues**, create a **Blocking** queue named `Skin updates`. This prevents two requests from clearing `images-examples` at the same time
-3. Under **Commands**, add an enabled command with Source **Twitch Message** and Mode **Regex**. Use `^!skin (?<minecraftName>[A-Za-z0-9_]{3,16})$`. Choose who can use it and set a global cooldown (for example, 300 seconds). Viewers can then send `!skin geilo_11`; the name becomes `%minecraftName%`. [Command help](https://docs.streamer.bot/guide/core/commands)
+3. Under **Commands**, add an enabled command with Source **Twitch Message** and Mode **Regex**. Use `^!skin (?<minecraftName>[A-Za-z0-9_]{3,16})$`. Choose who can use it and set a global cooldown (for example, 300 seconds). Viewers can then send `!skin alex`; the name becomes `%minecraftName%`. [Command help](https://docs.streamer.bot/guide/core/commands)
 4. Under **Actions**, create `Add Minecraft skin`, assign it to the `Skin updates` queue, disable **Concurrent**, and add a **Core → Commands → Command Triggered** trigger for that command
 5. Add these sub-actions **in order**, replacing `C:\Overlays\Minecraft-skins-Overlay` with your actual full folder path:
 
@@ -50,7 +50,7 @@ Add a **Browser** source named `Minecraft Skin Overlay`. Enable **Local file** a
 #
 ##  TEST
 
-With OBS and Streamer.bot running, send `!skin geilo_11` in Twitch chat. Check that it appears on its own line in `names.txt`, `images-examples\geilo_11.png` exists, `skins.generated.js` is updated, and OBS shows the skin. If something fails, check **Actions & Queues → Action History** in Streamer.bot. A failed download leaves the name in `names.txt` for the next run, but the overlay may temporarily show fewer skins because extraction clears the folder first
+With OBS and Streamer.bot running, send `!skin alex` in Twitch chat. Check that it appears on its own line in `names.txt`, `images-examples\alex.png` exists, `skins.generated.js` is updated, and OBS shows the skin. If something fails, check **Actions & Queues → Action History** in Streamer.bot. A failed download leaves the name in `names.txt` for the next run, but the overlay may temporarily show fewer skins because extraction clears the folder first
 
 To adjust the animation, edit the values at the top of `overlay.js` in CONFIG, you can change speed, size and other settings :)
 #
